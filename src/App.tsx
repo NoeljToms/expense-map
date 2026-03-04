@@ -17,7 +17,7 @@ const blankExpense = (): Expense => ({
   id: createId(),
   name: '',
   amount: 0,
-  category: 'groceries',
+  category: 'food',
   date: new Date().toISOString().slice(0, 10),
   note: '',
   location: '',

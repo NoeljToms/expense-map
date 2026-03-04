@@ -50,10 +50,12 @@ export function saveIncomeByMonth(incomeByMonth: IncomeByMonth) {
 }
 
 export const defaultCategories: Category[] = [
-  { id: 'groceries', label: 'Groceries', color: '#4C9D8B' },
-  { id: 'dining', label: 'Dining', color: '#D47047' },
-  { id: 'transport', label: 'Transport', color: '#5D7BD9' },
+  { id: 'food', label: 'Food', color: '#4C9D8B' },
+  { id: 'gifts', label: 'Gifts', color: '#D47047' },
   { id: 'bills', label: 'Bills', color: '#9C6ADE' },
-  { id: 'health', label: 'Health', color: '#C2507C' },
+  { id: 'gas', label: 'Gas', color: '#5D7BD9' },
+  { id: 'transportation', label: 'Transportation', color: '#38BDF8' },
+  { id: 'subscription', label: 'Subscription', color: '#C2507C' },
+  { id: 'miscellaneous', label: 'Miscellaneous', color: '#94A3B8' },
   { id: 'fun', label: 'Fun', color: '#E3A44C' }
 ]
