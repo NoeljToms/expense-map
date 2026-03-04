@@ -9,12 +9,12 @@ import {
   updateCategoryColor as apiUpdateCategoryColor,
 } from './api'
 import type { Category, Expense, MonthKey } from './types'
-import { formatMoney, groupByMonth, monthKey, sumByCategory, sumExpenses, uniqueMonths } from './utils'
+import { createId, formatMoney, groupByMonth, monthKey, sumByCategory, sumExpenses, uniqueMonths } from './utils'
 
 type Theme = 'light' | 'dark'
 
 const blankExpense = (): Expense => ({
-  id: crypto.randomUUID(),
+  id: createId(),
   name: '',
   amount: 0,
   category: 'groceries',
