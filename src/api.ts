@@ -5,7 +5,14 @@ const API_BASE = '/api'
 async function json<T>(res: Response): Promise<T> {
   if (!res.ok) {
     const text = await res.text()
-    throw new Error(text || `Request failed: ${res.status}`)
+    let parsedError = ''
+    try {
+      const parsed = JSON.parse(text) as { error?: string }
+      parsedError = parsed?.error ?? ''
+    } catch {
+      // Fall back to raw response body below.
+    }
+    throw new Error(parsedError || text || `Request failed: ${res.status}`)
   }
   return (await res.json()) as T
 }
@@ -33,6 +40,16 @@ export async function createExpense(expense: Expense): Promise<void> {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(expense),
+  }))
+}
+
+export async function createExpenses(expenses: Expense[]): Promise<void> {
+  if (expenses.length === 0) return
+
+  await json(await fetch(`${API_BASE}/expenses/import`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ expenses }),
   }))
 }
 
